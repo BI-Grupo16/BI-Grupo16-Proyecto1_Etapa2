@@ -1,6 +1,6 @@
-# Proyecto1_Etapa1
+# Proyecto 1 - Etapa 2
 
-Esta es la primera etapa del proyecto 1 de analítica de textos del curso de Inteligencia de Negocios. Los datos etiquetados se encuentran en el archivo **particion_prueba_grupo16.csv** dentro la carpeta *data*.
+Esta es la segunda etapa del proyecto 1 de analítica de textos del curso de Inteligencia de Negocios.
 
 *Grupo 16:*
 
