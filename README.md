@@ -2,7 +2,7 @@
 
 Esta es la segunda etapa del proyecto 1 de analítica de textos del curso de Inteligencia de Negocios.
 
-*Grupo 16:*
+**Grupo 16:**
 
 - Samuel Alejandro Jiménez Ramírez - 202116652
 
