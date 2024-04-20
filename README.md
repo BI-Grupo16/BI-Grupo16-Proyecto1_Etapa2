@@ -19,7 +19,7 @@ pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-Tenemos que verificar que la aplicación esté corriendo en la ruta `http://127.0.0.1:8000` para esto entramos a [esta ruta](http://127.0.0.1:8000/docs) y verificar que todo esté funcionando correctamente.
+Tenemos que verificar que la aplicación esté corriendo en la ruta `http://127.0.0.1:8000/docs` para esto entramos a [esta ruta](http://127.0.0.1:8000/docs) y verificar que todo esté funcionando correctamente.
 
 ### Frontend
 
