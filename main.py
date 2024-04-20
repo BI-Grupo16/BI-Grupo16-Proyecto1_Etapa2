@@ -7,6 +7,10 @@ from DataModel import DataModel
 from joblib import load
 from fastapi.responses import HTMLResponse
 
+from fastapi import FastAPI, UploadFile, File
+from fastapi.responses import FileResponse
+import tempfile
+
 import os
 import pandas as pd
 
@@ -47,6 +51,7 @@ def read_item(item_id: int, q: Optional[str] = None):
 
 
 # ARCHIVO
+"""
 @app.post("/predictions")
 def make_predictions(dataModel: DataModel):
    df = pd.DataFrame(dataModel.dict(), columns=dataModel.dict().keys(), index=[0])
@@ -55,6 +60,34 @@ def make_predictions(dataModel: DataModel):
    # pipeline ()
    result = model.predict(df)
    return result
+"""
+@app.post("/predictions")
+async def process_file(file: UploadFile = File(...)):
+   # Guardar el archivo temporalmente
+   with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as temp_file:
+      temp_file.write(await file.read())
+      temp_file_name = temp_file.name
+
+   # Procesar el archivo CSV
+   df = pd.read_csv(temp_file_name)
+   predictions = pipeline.predict(df['Review'])
+   
+   df_processed = df.copy()
+   df_processed['Predictions'] = predictions
+
+   # Guardar el archivo procesado temporalmente
+   with tempfile.NamedTemporaryFile(delete=False, suffix=".csv") as processed_file:
+      # Guardar el DataFrame procesado como CSV
+      df_processed.to_csv(processed_file.name, index=False)
+
+   # verificar el archivo procesado processed_file, abriendolo y cargandodolo
+   df_check = pd.read_csv(processed_file.name)
+   print("df_check")
+   print(df_check.head())
+   # ACA VA BIEN
+
+   # Devolver el archivo procesado al cliente
+   return FileResponse(processed_file.name, media_type="text/csv", filename="processed_data1.csv")
 
 # INDIVIDUAL
 @app.post("/prediction")

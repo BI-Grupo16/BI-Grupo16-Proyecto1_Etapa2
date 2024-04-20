@@ -1,73 +1,9 @@
 import Chart from 'chart.js/auto';
 
-const reviewForm = document.getElementById("reviewForm");
-const textButton = document.getElementById("predictTextButton");
+const form = document.getElementById("reviewForm");
 const URL = "http://127.0.0.1:8000/prediction";
-const URL2 = "http://127.0.0.1:8000/predictions";
-const jsonPath = "./assets/recomendations.json";
-const fileForm = document.getElementById("fileForm");
-const fileButton = document.getElementById("predictFileButton");
+const jsonPath = "./assets/recomendations.json"
 let jsonRecomendations;
-
-textButton.addEventListener("click", (event) => {
-  event.preventDefault();
-  const reviewText = document.getElementById("reviewText").value;
-  document.getElementById("reviewText").value = ''; // Limpiar el campo de texto después de enviar
-
-  fetchPrediction(reviewText);
-});
-
-const fetchPrediction = (reviewText) => {
-  fetch(URL, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ reviewText }),
-  })
-  .then((response) => response.json())
-  .then(data => {
-      renderPie(data);
-      renderCalification(data);
-      renderReview(reviewText);
-  })
-  .catch((error) => console.error("Error:", error));
-};
-
-fileButton.addEventListener("click", async (event) => {
-  event.preventDefault();
-  const fileInput = document.getElementById("fileUpload");
-  const file = fileInput.files[0];
-
-  if (file) {
-    const formData = new FormData();
-    formData.append("file", file);
-
-    try {
-      const response = await fetch(URL2, {
-        method: "POST",
-        body: formData,
-      });
-
-      if (!response.ok) {
-        throw new Error("Error al procesar el archivo.");
-      }
-
-      const blob = await response.blob();
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement('a');
-      link.href = url;
-      link.setAttribute('download', 'processed_data.csv');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  } else {
-    console.error("No se ha seleccionado ningún archivo.");
-  }
-});
 
 
 const renderPie = (dataFetch) => {   
@@ -170,11 +106,41 @@ const renderReview = (review) =>{
 }
 
 
+const fetchPrediction = (reviewText) => {
+  // Hacer la solicitud POST al endpoint de predicción
+  fetch(URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ reviewText }),
+  })
+    .then((response) => response.json())
+    .then(data => {
+        renderPie(data);
+        renderCalification(data);
+        renderReview(reviewText);
+    })
+    .catch((error) => console.error("Error:", error));
+};
 
-// Carga inicial de recomendaciones
+form.onsubmit = (event) => {
+  event.preventDefault();
+  const formText = document.getElementById("reviewText")
+  const reviewText = formText.value;
+  formText.value = '';
+
+  fetchPrediction(reviewText);
+};
+
 fetch(jsonPath)
   .then(response => response.json())
   .then(data => {
     jsonRecomendations = data;
   })
   .catch(error => console.error('Error al cargar el archivo JSON:', error));
+
+
+
+
+
