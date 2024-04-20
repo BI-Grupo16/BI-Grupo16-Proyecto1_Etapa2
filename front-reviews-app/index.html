@@ -19,22 +19,27 @@
 
     <div class="container-fluid" id="bodyExpect">
         <!-- Review Text Form -->
-        <form id="reviewForm">
-            <div class="mb-3">
-                <label for="reviewText" class="form-label font-weight-bold">Escribe tu reseña:</label>
-                <textarea class="form-control" id="reviewText" rows="3"></textarea>
-            </div>
-            <button type="button" class="btn btn-primary" id="predictTextButton">Predecir Texto</button>
-        </form>
-
+        <div class="form-container" id="reviewTextFormContainer">
+            <form id="reviewForm">
+                <div class="mb-3">
+                    <label for="reviewText" class="form-label font-weight-bold">Escribe tu reseña:</label>
+                    <textarea class="form-control" id="reviewText" rows="3"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary" id="predictTextButton">Predecir Texto</button>
+            </form>
+        </div>
+        <div class="form-container" id="emptyContainer">
+        </div>
         <!-- File Upload Form -->
-        <form id="fileForm">
-            <div class="mb-3">
-                <label for="fileUpload" class="form-label font-weight-bold"> un archivo CSV con múltiples reseñas:</label>
-                <input type="file" class="form-control" id="fileUpload" accept=".csv">
-            </div>
-            <button type="button" class="btn btn-primary" id="predictFileButton">Predecir Archivo</button>
-        </form>
+        <div class="form-container" id="fileUploadFormContainer">
+            <form id="fileForm">
+                <div class="mb-3">
+                    <label for="fileUpload" class="form-label font-weight-bold">Subir un archivo CSV con múltiples reseñas:</label>
+                    <input type="file" class="form-control" id="fileUpload" accept=".csv">
+                </div>
+                <button type="button" class="btn btn-primary" id="predictFileButton">Predecir Archivo</button>
+            </form>
+        </div>
 
         <!-- Placeholder for Result and Probabilities -->
         <div id="result"></div>
@@ -45,13 +50,13 @@
 
         <!-- Result Columns for Predictions and Recommendations -->
         <div class="row">
-            <div class="col text-center" id="primeraColumna">
+            <div class="col d-flex align-items-center justify-content-center" id="primeraColumna">
                 <!-- Predicted Rating Display -->
             </div>
-            <div class="col text-center" id="segundaColumna">
+            <div class="col d-flex align-items-center justify-content-center" id="segundaColumna">
                 <!-- Pie Chart Display -->
             </div>
-            <div class="col text-center" id="terceraColumna">
+            <div class="col d-flex align-items-center justify-content-center" id="terceraColumna">
                 <!-- Recommendations Display -->
             </div>
         </div>

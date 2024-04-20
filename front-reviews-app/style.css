@@ -58,3 +58,7 @@ body {
 .col{
   text-align: center; /* Centra el contenido horizontalmente */
 }
+
+.form-container {
+  margin-bottom: 25px; /* Ajusta el espacio entre los contenedores de los formularios según sea necesario */
+}
