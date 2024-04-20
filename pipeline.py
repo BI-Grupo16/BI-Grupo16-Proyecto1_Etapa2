@@ -1,4 +1,3 @@
-
 import nltk
 import os
 import joblib
@@ -6,28 +5,17 @@ from num2words import num2words
 import pandas as pd
 # librería Natural Language Toolkit, usada para trabajar con textos
 import nltk
-
 # Punkt permite separar un texto en frases.
 nltk.download('punkt')
-
 # Descarga de paquete WordNetLemmatizer, este es usado para encontrar el lema de cada palabra
 nltk.download('wordnet')
-
 # Descarga todas las palabras vacias, es decir, aquellas que no aportan nada al significado del texto
 nltk.download('stopwords')
-
-
 from sklearn.pipeline import Pipeline
-
-
 from sklearn.base import TransformerMixin, BaseEstimator
-
 from nltk import word_tokenize
-
 import re
 import unicodedata
-
-
 from nltk.corpus import stopwords
 from nltk.stem import SnowballStemmer
 

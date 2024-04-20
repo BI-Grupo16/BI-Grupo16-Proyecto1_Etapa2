@@ -8,39 +8,52 @@ let jsonRecomendations;
 
 
 const renderPie = (dataFetch) => {   
-    const elementHTML = document.getElementById('segundaColumna');
-    elementHTML.innerHTML= '<canvas id="myPieChart" width="100" height="100"></canvas>'
-    const ctx = document.getElementById('myPieChart').getContext('2d');
-    let probabilities = dataFetch.probabilities[0];
-    probabilities = probabilities.map(element => {return element.toFixed(2)});
-    const data = {
-        labels: ['1', '2', '3', '4', '5'],
-        datasets: [
-          {
-            label: 'Probabilidad',
-            data: probabilities,
-            backgroundColor: ['#FF0000', '#FF7D03', '#FFF40A', '#8ac73e', '#006837'],
-          }
-        ]
-    };
-    const config = {
-        type: 'pie',
-        data,
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: 'Probabilidad predicha para cada calificación'
+  const elementHTML = document.getElementById('segundaColumna');
+  elementHTML.innerHTML= '<canvas id="myPieChart" width="100" height="100"></canvas>';
+  const ctx = document.getElementById('myPieChart').getContext('2d');
+  let probabilities = dataFetch.probabilities[0];
+  probabilities = probabilities.map(element => element.toFixed(2));  // Format to 2 decimal places
+  const data = {
+      labels: ['1', '2', '3', '4', '5'],
+      datasets: [
+        {
+          label: 'Probabilidad',
+          data: probabilities,
+          backgroundColor: ['#FF0000', '#FF7D03', '#FFF40A', '#8ac73e', '#006837'],
+        }
+      ]
+  };
+  const config = {
+      type: 'pie',
+      data,
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'top',
+          },
+          tooltip: {
+            callbacks: {
+              label: function(tooltipItem) {
+                let label = tooltipItem.dataset.label || '';
+                if (label) {
+                  label += ': ';
+                }
+                const value = parseFloat(tooltipItem.raw).toFixed(2) * 100 + '%';
+                return label + value;
+              }
             }
+          },
+          title: {
+            display: true,
+            text: 'Probabilidad predicha para cada calificación'
           }
-        },
-      };
-    const myPieChart = new Chart(ctx, config);
+        }
+      },
+    };
+  const myPieChart = new Chart(ctx, config);
 };
+
 
 const renderRecomendaciones = (calification) => {
     const divHTML = document.getElementById("terceraColumna");
@@ -68,16 +81,25 @@ const renderRecomendaciones = (calification) => {
 }
 
 const renderCalification = (dataFetch) => {
-    const calification = dataFetch.predictions[0];
-    const divHTML = document.getElementById("primeraColumna");
-    divHTML.innerHTML = `
-    <div class="containerNumber">
-        <div class="number">${calification}</div>
-        <div class="title">Calificación Predecida</div>
-    </div>`;
-    renderRecomendaciones(calification);
-    
-}
+  const calification = dataFetch.predictions[0];
+  const divHTML = document.getElementById("primeraColumna");
+
+  // Función para generar estrellas basadas en la calificación
+  const generateStars = (calification) => {
+      return '⭐'.repeat(calification); 
+  };
+
+  const stars = generateStars(calification); 
+
+  divHTML.innerHTML = `
+  <div class="containerNumber">
+      <div class="number">${calification}</div>
+      <div class="stars">${stars}</div>
+      <div class="title">Calificación Predicha</div>
+  </div>`;
+
+  renderRecomendaciones(calification);
+};
 
 const renderReview = (review) =>{
     const elementHTML = document.getElementById('reviewDiv');
