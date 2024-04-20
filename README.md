@@ -38,7 +38,7 @@ Cuando hayamos ejecutado todos los pasos anteriores estarémos listos para usar 
 
 ## Uso
 
-Para usar la aplicación nos ubicaremos en la dirección que obtuvimos en el último paso
+Para usar la aplicación nos ubicaremos en la dirección que obtuvimos en el último paso:
 
 ![Imágen de referencia de la aplicación](imgs/pic1.jpg)
 
