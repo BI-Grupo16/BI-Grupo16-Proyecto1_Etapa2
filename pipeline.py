@@ -2,7 +2,7 @@
 import nltk
 import os
 import joblib
-
+from num2words import num2words
 import pandas as pd
 # librería Natural Language Toolkit, usada para trabajar con textos
 import nltk

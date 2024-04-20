@@ -1,11 +1,10 @@
 from typing import Optional
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware  # Importar el middleware CORS
 
 from DataModel import DataModel
-
 from joblib import load
-
 from fastapi.responses import HTMLResponse
 
 import os
@@ -16,21 +15,23 @@ from pipeline import create_pipeline
 app = FastAPI()
 pipeline = create_pipeline()
 
-#data = {'Review': ['PESIMO', 'aaaa']}
-#df = pd.DataFrame(data)
-#a = pipeline.predict(df['Review'])
-#print(a)
+# Definir la configuración de CORS
+origins = ["*"]  # Esto permite solicitudes desde cualquier origen. Puedes especificar los orígenes permitidos según tus necesidades.
 
+# Agregar el middleware CORS a la aplicación
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],  # Puedes especificar los métodos HTTP permitidos
+    allow_headers=["*"],  # Puedes especificar los encabezados permitidos
+)
 
 @app.get("/", response_class=HTMLResponse)
 async def read_items():
    html_path = os.path.join('templates', 'index.html')
    with open(html_path, 'r') as file:  # r to open file in READ mode
       html_content = file.read()
-
-
-   # crear dataframe con columna REview
-   
 
    return HTMLResponse(content=html_content, status_code=200)
 
@@ -58,7 +59,6 @@ def make_predictions(dataModel: DataModel):
 # INDIVIDUAL
 @app.post("/prediction")
 def make_prediction(dataModel: DataModel):
-   #print(dataModel.reviewText)
    df = pd.DataFrame({'Review': [dataModel.reviewText]})
 
    # Hacer predicciones con el pipeline cargado

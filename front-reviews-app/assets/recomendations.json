@@ -1,0 +1,29 @@
+{
+    "recomendaciones": [
+      {
+        "Limpieza": "Mantener los espacios limpios, aseo de los sitios comunes.",
+        "Puntualidad": "Ser puntuales con la hora de entrega y salida, no hacer esperar a los usuarios",
+        "Inventario": "Tener gran variedad de inventario como aire acondicionado, toallas, muebles, etc."
+      },
+      {
+        "Precio": "Manejar precios competentes de acuerdo con las prestaciones del lugar",
+        "Medios de pago": "Manejar distintos medios de pago",
+        "Puntualidad": "Ser puntuales con la hora de entrega y salida, no hacer esperar a los usuarios"
+      },
+      {
+        "Puntualidad": "Ser puntuales con la hora de entrega y salida, no hacer esperar a los usuarios",
+        "Precio": "Manejar precios competentes de acuerdo con las prestaciones del lugar",
+        "Inmobiliario nuevo": "A los clientes les gusta contar con inmobiliario nuevo."
+      },
+      {
+        "Limpieza": "Mantener los espacios limpios, aseo de los sitios comunes. Seguir con la buena higiene.",
+        "Variedad gastronómica": "Los clientes aprecian la variedad gastronómica, en especial actividades tipo buffet.",
+        "Precio": "Manejar precios competentes de acuerdo con las prestaciones del lugar"
+      },
+      {
+        "Continuidad": "Mantener la buena prestación del servicio",
+        "Precio": "Realizar promociones para atraer potenciales clientes",
+        "Publicidad": "Realizar campañas publicitarias"
+      }
+    ]
+  }

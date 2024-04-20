@@ -1,0 +1,60 @@
+body {
+  background-color: #dfe1ee;
+}
+
+#bodyExpect {
+  margin: 20px; 
+}
+
+.containerNumber {
+  width: 200px;
+  height: 200px;
+  background-color: lightgray;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.number {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 16px;
+  color: gray;
+  margin-top: 5px;
+}
+
+#reviewDiv {
+  margin: 10px auto; /* Centra el contenedor horizontalmente */
+  padding: 20px; /* Añade espacio dentro del contenedor */
+  text-align: center; /* Centra el texto dentro del contenedor */
+  font-family: Arial, sans-serif; /* Fuente del texto */
+}
+
+/* Estilos para el texto dentro del contenedor */
+.reviewDiv p {
+  font-size: 18px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  line-height: 1.6; /* Altura de línea */
+}
+
+.form-label {
+  font-size: 18px; /* Tamaño de fuente */
+  color: #333; /* Color del texto */
+  font-family: Arial, sans-serif; /* Familia de fuentes */
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
+}
+
+.font-weight-bold {
+  font-weight: bold; /* Hace el texto en negrita */
+}
+
+.col{
+  text-align: center; /* Centra el contenido horizontalmente */
+}
