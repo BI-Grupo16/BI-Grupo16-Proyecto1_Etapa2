@@ -28,7 +28,7 @@ Para correr el front dentro de la carpeta raíz de la aplicación se deven corre
 ```
 cd front-reviews-app
 npm install
-npm build
+npm run build
 npm run preview
 ```
 
