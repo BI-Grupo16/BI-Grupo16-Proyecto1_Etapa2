@@ -32,7 +32,7 @@ npm build
 npm run preview
 ```
 
-Una vez realizado este proceso verificamos que el front de la aplicación esté corriendo en [esta ruta](http://127.0.0.1:4173/) (http://127.0.0.1:4173/).
+Una vez realizado este proceso verificamos que el front de la aplicación esté corriendo en [esta ruta](localhost:4173/) (http://localhost:4173/).
 
 Cuando hayamos ejecutado todos los pasos anteriores estarémos listos para usar la aplicación.
 
