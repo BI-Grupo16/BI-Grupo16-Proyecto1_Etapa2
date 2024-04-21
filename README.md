@@ -9,7 +9,7 @@
 
 ## Instalación
 
-La aplicación está desarrollada en dos partes, front y back, se necesita  [Node.js](https://nodejs.org/) v16+ junto con el npm y [python](https://www.python.org/) v3.7+ para ejecutar el programa.
+La aplicación está desarrollada en dos partes, front y back, se necesita  [Node.js](https://nodejs.org/) v20+ junto con el npm y [python](https://www.python.org/) v3.12+ para ejecutar el programa.
 
 ### Backend
 
